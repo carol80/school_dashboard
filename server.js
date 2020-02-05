@@ -4,18 +4,12 @@ var bodyParser = require('body-parser')
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const session = require('express-session');
 const http = require('http');
+const mongoose = require('mongoose')
 
-var admin = require('firebase-admin')
-
-// This account is no longer valid
-var serviceAccount = require('./agriculture-db-firebase-adminsdk-h8r3y-279d91e862.json')
-
-var firebaseAdmin = admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://agriculture-db.firebaseio.com"
+//CONNECT TO DB
+mongoose.connect("mongodb+srv://amurto:tsec@tsec-nie5s.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+  console.log("connected to db");
 })
-
-var database = firebaseAdmin.database()
 
 // Create instance of express app
 var app = express()
