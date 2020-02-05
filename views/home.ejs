@@ -124,12 +124,12 @@
                 <canvas id="myChart"></canvas>
               </div>
             </div>
-            <div class="col-md-6">
+            <!-- <div class="col-md-6">
               <div class="chart-container">
                 <h3>Chart2</h3>
                 <canvas id="myChart2"></canvas>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </section>
@@ -236,100 +236,111 @@
             </div>
           </div>
         </section>
-        <section class="chrt3">
-          <div class="container-fluid">
+        <div class="container">
+          <form action="">
             <div class="row">
-              <div class="col-md-9">
-                <div class="chart-container">
-                  <canvas id="chart3" width="100%"></canvas>
-                </div>
+              <div class="col-25">
+                <label for="attend_club">Attendance of Club</label>
               </div>
-              <div class="col-md-4">
-                <div class="box">
-                </div>
+              <div class="col-75">
+                <input type="number" id="attend_club" name="attend_club" placeholder="Attendance">
               </div>
             </div>
-          </div>
-        </section>
-      </section>
-
-      <section id="2"></section>
-<form action="/generate_form" method="POST">
-<section id="container1" class="add" style="height: 100%; width:100%;" >
-    <h1 class="col-lg-12" style="text-align: center; color: #b09db9;">FILL THE 7/12 EXTRACT!!</h1>
-
-<span class="input col-sm-4">
-    <input type="text" class="input__field" id="input-1" name="village" required />
-    <label for="input-1" class="input__label">
-    <span class="input__label-content">Village</span>
-</label>
-</span>
-
-<span class="input col-sm-4">
-    <input type="number" class="input__field" id="input-2" name="survey_no" required />
-    <label for="input-2" class="input__label">
-    <span class="input__label-content">Survey no</span>
-    </label>
-</span>
-
-<span class="input col-sm-4">
-    <input type="text" class="input__field" id="input-3" name="sub_division_of" required />
-    <label for="input-3" class="input__label">
-    <span class="input__label-content">Sub division of</span>
-    </label>
-</span>
-
-<span class="input col-sm-4">
-    <input type="text" class="input__field" id="input-4" name="taluka" required/>
-    <label for="input-4" class="input__label">
-    <span class="input__label-content">Taluka</span>
-    </label>
-</span>
-
-<span class="input col-sm-4">
-  <input type="text" class="input__field" id="input-6" name="name_of_occupant" required />
-  <label for="input-6" class="input__label">
-  <span class="input__label-content">Name of Occupant</span>
-  </label>
-</span>
-
-<span class="input col-sm-4">
-  <input type="number" class="input__field" id="input-7" name="khata_no" required />
-  <label for="input-7" class="input__label">
-  <span class="input__label-content">Khata no.</span>
-  </label>
-</span>
-
-<span class="input col-sm-4">
-  <input type="text" class="input__field" id="input-8" name="name_of_the_rent" required />
-  <label for="input-8" class="input__label">
-  <span class="input__label-content">Name of the Rent</span>
-  </label>
-</span>
-
-<span class="input col-sm-4">
-    <input type="number" class="input__field" id="input-9" name="phone" required></input>
-    <label for="input-9" class="input__label">
-    <span class="input__label-content">phone</span>
-    </label>
-</span>
+            <div class="row">
+              <div class="col-25">
+                <label for="attend_fac">Attendance of Facilitator</label>
+              </div>
+              <div class="col-75">
+                <input type="number" id="attend_fac" name="attend_fac" placeholder="Attendance">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="feedback">Feedback</label>
+              </div>
+              <div class="col-75">
+                <textarea id="feedback" name="feedback" placeholder="Write something.." style="height:200px"></textarea>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <input type="submit" value="Submit">
+            </div>
+          </form>
+        </div>
 
 
-<span class="input col-sm-4">
-  <input class="searchTextField input__field" id="input-10" name="address" required></input>
-  <label for="input-10" class="input__label">
-  <span class="input__label-content">Address</span>
-  </label>
-</span>
-
-<span class="col-lg-6" style="padding-left: 220px;">
-<button id="send-button" type="submit">NEXT -->></button></span>
-
-</section>
-</form>
 
 <style>
     @import url(https://fonts.googleapis.com/css?family=Raleway:200,500,700,800);
+
+
+/* Style inputs, select elements and textareas */
+input[type=text], select, textarea{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+/* Style the label to display next to the inputs */
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+  color: white;
+  font-family: 'Droid Sans', sans-serif;
+  font-size: medium;
+}
+
+/* Style the submit button */
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+/* Style the container */
+.container {
+  border-radius: 5px;
+  background-color: #313348;
+  padding: 20px;
+}
+
+/* Floating column for labels: 25% width */
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+/* Floating column for inputs: 75% width */
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
 
 .add {
   background: #111;
@@ -341,7 +352,7 @@
 
 #container1 {
   position: absolute;
-  width: 100%;
+  width: 50%;
   height: 5em;
   display: flex;
   flex-wrap: wrap;
