@@ -6,7 +6,9 @@ const session = require('express-session');
 const http = require('http');
 const mongoose = require('mongoose')
 const schools = require('./views/js/school')
-const getCoordsForAddress = require('./views/js/location')
+const saturday = require('./views/js/saturday')
+const attendance = require('./views/js/attendance')
+const users = require('./views/js/user')
 
 //CONNECT TO DB
 mongoose.connect("mongodb+srv://amurto:tsec@tsec-nie5s.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
@@ -30,37 +32,46 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(logger('dev'))
 
-app.get('/', (req, res) => {
-  res.render('home.ejs')        
+app.get('/',async (req, res) => {
+  let user;
+  user = await users.find().select("name verticals gender");
+  console.log(user)
+  res.render("home.ejs",{data:user});        
 })
 
-app.get('/add', async (req,res) => {
-  let coords;
-  var address = 'Bandra West, Mumbai, Mumbai Suburban, Maharashtra, India';
-  coords = await getCoordsForAddress(address)
-  console.log(coords)
-  res.send(coords);
+// app.get('/add', async (req,res) => {
+//   let school;
+//   school = await schools.find().select("location name");
+//   res.render("index.ejs",{data:school});
+// })
+
+
+app.post('/', async (req,res) => {
+  var college = "fr.crce"
+  console.log(req.body.date)
+  data = await saturday.findOne({ college: college, date: req.body.date});
+  d = (data.coding_mem.concat(data.dance_mem)).concat(data.drama_mem)
+  console.log(d)
+  res.render("attendance.ejs",{data : d, date : req.body.date});
 })
 
-app.post('/', async(req, res, next) => {
-    const school = new schools({
-        name : "fr.crce",
-        address : "Bandra West, Mumbai, Mumbai Suburban, Maharashtra, India",
-      });
 
-      console.log(school);
-
-      try {
-        await school.save();
-      } catch (err) {
-        const error = new HttpError(
-          'Signing up failed, please try again.',
-          500
-        );
-        return next(error);
-      }
-        res.send(school);
-});
+app.post('/attendance', (req,res) => {
+     const attend = new attendance({
+      date : req.body.date,
+      coding : req.body.coding,
+      dance : req.body.dance,
+      drama : req.body.drama,
+      users : [req.body.mem1,req.body.mem2,req.body.mem3,req.body.mem4,req.body.mem5,req.body.mem6]
+    });
+    try{
+        attend.save()
+        console.log('attendance sucessfully registered!!');
+    } catch (err) {
+        console.log('Failed!! Please fill all the details in the form');
+    }
+  res.render("home.ejs");
+})
 
 app.use(session({secret: 'anything-you-want-but-keep-secret'}));
 

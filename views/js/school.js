@@ -13,9 +13,9 @@ const schoolSchema = mongoose.Schema({
         type : String,
         required : false
     },
-    location : {
-        type : String,
-        required : false
+    location: {
+        lat: { type: Number, required: true },
+        lng: { type: Number, required: true },
     }
 });
 

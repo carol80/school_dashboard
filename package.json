@@ -17,6 +17,7 @@
     "express-session": "^1.17.0",
     "firebase-admin": "^5.0.1",
     "mongoose": "^5.8.11",
+    "mongoose-unique-validator": "^2.0.3",
     "morgan": "^1.9.1",
     "nodemon": "^2.0.2",
     "twilio": "^3.39.3"
