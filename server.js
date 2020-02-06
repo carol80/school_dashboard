@@ -9,6 +9,7 @@ const schools = require('./views/js/school')
 const saturday = require('./views/js/saturday')
 const attendance = require('./views/js/attendance')
 const users = require('./views/js/user')
+const feedback = require('./views/js/feedback')
 
 //CONNECT TO DB
 mongoose.connect("mongodb+srv://amurto:tsec@tsec-nie5s.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
@@ -71,6 +72,32 @@ app.post('/attendance', (req,res) => {
         console.log('Failed!! Please fill all the details in the form');
     }
   res.render("home.ejs");
+})
+
+app.get('/feedback', (req,res) => {
+  res.render('feedback.ejs')
+})
+
+app.post('/feedback', (req,res) => {
+  const feed = new feedback({
+    coding : sum_code,
+    dance : sum_dance,
+    drama : sum_drama,
+    speaking : sum_publicS,
+    music : sum_music,
+    elex : sum_elec,
+    arts : sum_visualA,
+    frisbee : sum_frisbee,
+    manager : sum_schoolM,
+    college : "fr.crce"
+ });
+ try{
+     feed.save()
+     console.log('feedback sucessfully registered!!');
+ } catch (err) {
+     console.log('Failed!! Please fill all the details in the form');
+ }
+res.render("feedback.ejs",{data : feed});
 })
 
 app.use(session({secret: 'anything-you-want-but-keep-secret'}));
