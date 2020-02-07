@@ -12,6 +12,7 @@ var sum_elec=0;
 var sum_visualA=0;
 var sum_frisbee=0;
 var sum_schoolM=0;
+var sentiment = {};
 
 const client = new google.auth.JWT(
     keys.client_email,
@@ -37,17 +38,17 @@ client.authorize(function(err,token){
     }
     else{
         console.log("Connected");
-        {
-            sum_code :gsrun1(client),
-            sum_dance : gsrun2(client),
-            sum_drama : gsrun3(client),
-            sum_publicS :  gsrun4(client),
-            sum_music : gsrun5(client),
-            sum_elec : gsrun6(client),
-            sum_visualA : gsrun7(client),
-            sum_frisbee : gsrun8(client),
-            sum_schoolM : gsrun9(client)
-        }
+
+        gsrun1(client),
+        gsrun2(client),
+        gsrun3(client),
+        gsrun4(client),
+        gsrun5(client),
+        gsrun6(client),
+        gsrun7(client),
+        gsrun8(client),
+        gsrun9(client)
+
     }
 })
 
@@ -68,6 +69,7 @@ async function gsrun1(cl){
     console.log(coding)
     sum_code = sentimentAnalysis(coding,sum_code);
     console.log(sum_code);
+    var sentment =
     return sum_code;
 }
 
@@ -232,5 +234,6 @@ async function gsrun9(cl){
     return sum_schoolM;
 }
 
-    
+console.log(sentiment);
 
+// module.exports = sentiment;

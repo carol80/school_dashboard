@@ -48,7 +48,8 @@ app.get('/',async (req, res) => {
 
 
 app.post('/', async (req,res) => {
-  var college = "fr.crce"
+  // var college = "fr.crce"
+  var college = "Thadomal College"
   console.log(req.body.date)
   data = await saturday.findOne({ college: college, date: req.body.date});
   d = (data.coding_mem.concat(data.dance_mem)).concat(data.drama_mem)

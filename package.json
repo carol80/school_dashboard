@@ -20,7 +20,9 @@
     "mongoose-unique-validator": "^2.0.3",
     "morgan": "^1.9.1",
     "nodemon": "^2.0.2",
-    "twilio": "^3.39.3"
+    "twilio": "^3.39.3",
+    "googleapis": "^47.0.0",
+    "sentiment": "^5.0.2"
   },
   "repository": {
     "type": "git",
