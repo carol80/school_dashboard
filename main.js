@@ -24,12 +24,12 @@ function sentimentAnalysis(mydocx,sum){
     var arr = new Array(mydocx.length);
     // var sum = 0;
     mydocx.forEach(function(s){
-        console.log(sentiment.analyze(s));
+        // console.log(sentiment.analyze(s));
         sum = sum + sentiment.analyze(s).score;
         // arr.push(sentiment.analyze(s).score);
     })
     sum = sum / mydocx.length;
-    return sum;
+    // return sum;
 }
 client.authorize(function(err,token){
     if(err){
@@ -69,7 +69,7 @@ async function gsrun1(cl){
     console.log(coding)
     sum_code = sentimentAnalysis(coding,sum_code);
     console.log(sum_code);
-    var sentment =
+
     return sum_code;
 }
 
